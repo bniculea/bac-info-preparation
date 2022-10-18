@@ -135,6 +135,51 @@
                     executa_set_instructiuni_default;
             }
         ```
+        - DE RETINUT: Daca este omis keyword-ul `break`, executia se va muta la urmatorul `case` si va continua in acest ritm pana la intalnirea unui `case` ce va avea specificat keyword-ul `break` sau pana la executia tuturor `case`-urilor, in cazul in care niciuna nu va avea acest keyword.
+        - Exemplu:
+            ```c++
+                char ch;
+                cout << "Introduceti un caracter: ";
+                cin >> ch;
+                switch (ch) {
+                    case 'a':
+                        cout << "Ati introdus valoarea a" << endl;
+                    case 'e':
+                        cout << "Ati introdus valoarea e" << endl;
+                    case 'i':
+                        cout << "Ati introdus valoarea i" << endl;
+                    case 'o':
+                        cout << "Ati introdus valoarea o" << endl;
+                        break;
+                    case 'u':
+                        cout << "Ati introdus valoarea u" << endl;
+                        break;
+                    default:
+                        cout << "Ati introdus un caracter care nu face parte din [a,e,i,o,u]";
+    }
+            ```
+                - In cazul in care, utilizatorul introduce de la tastatura, caracterul `i`, bucata de cod anterior va afisa: 
+                    ```js
+                        Ati introdus valoarea i
+                        Ati introdus valoarea o
+                    ```
+
+## 3. Instructiuni repetitive
+In C++ avem 3 tipuri de instructiuni repetitive:
+    - Cu conditie initiala: `while`
+    - Cu conditie finala:  `do while`
+    - Cu numar cunoscut de pasi: `for`
+### 3.1 Cu conditie initiala: `while`:
+- Sintaxa structurii `while` este urmatoarea:
+    ```c++
+        while (expresie) {
+            //executa bloc de instructiuni
+        }
+    ```
+- La fel ca in cazul structurii `if`, expresia folosita in cadrul `while`, este considerata adevarata (true) daca are o valoare diferita de `0`.
+    - Putem folosi atat operatii logice (e.g `a > b`, `a != b`, `a == b`) cat si expresii matematica (`a * b`, `n`, etc) deoarece in final se va testa valoarea rezultatului expresiei
+- Orice variabila declarata in interiorul corpului structurii `while`, va fi vizibila (accesibila) doar in cadrul structurii `while`
+    - DE RETINUT: La fiecare noua iteratie, orice variabila declarata in cadrul structurii `while` va fi reinitializata!
 
 ## Exercitii propuse
 - Pentru o mai buna intelegere a codului de mai jos, este recomandat sa il evaluati fie prin simpla citire, fie pe o foaie. Comparati rezultatul obtinut cu valoarea returnata de catre un IDE (de exemplu Code::blocks)
@@ -166,4 +211,24 @@
         else if (varsta > 9 && varsta < 18) {
             cout << "Inca sunteti micut pentru a aplica."
         }
+    ```
+3. Ce se va afisa in urma rularii urmatoarei bucate de cod considerand ca de la tastatura, utilizatorul a introdus caracterul `a`: 
+    ```c++
+    char ch;
+    cout << "Introduceti un caracter: ";
+    cin >> ch;
+    switch (ch) {
+        case 'a':
+            cout << "Ati introdus valoarea a" << endl;
+        case 'e':
+            cout << "Ati introdus valoarea e" << endl;
+        case 'i':
+            cout << "Ati introdus valoarea i" << endl;
+        case 'o':
+            cout << "Ati introdus valoarea o" << endl;
+        case 'u':
+            cout << "Ati introdus valoarea u" << endl;
+        default:
+            cout << "Ati introdus un caracter care nu face parte din [a,e,i,o,u]";
+    }
     ```
