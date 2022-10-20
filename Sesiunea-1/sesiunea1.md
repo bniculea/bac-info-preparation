@@ -181,6 +181,64 @@ In C++ avem 3 tipuri de instructiuni repetitive:
 - Orice variabila declarata in interiorul corpului structurii `while`, va fi vizibila (accesibila) doar in cadrul structurii `while`
     - DE RETINUT: La fiecare noua iteratie, orice variabila declarata in cadrul structurii `while` va fi reinitializata!
 
+### 3.2 Cu Conditie finala
+- Instructiunea repetitiva cu conditie finala, este instructiunea `do while`
+- Sintaxa acestei structuri, este urmatoarea:
+    ```c++
+        do {
+            //executa set de instructiuni
+        } while (expresie)
+    ```
+- Diferenta dintre structura `while` si structura `do-while` este faptul ca expresia folosita ca si conditie de continuare a iteratiilor din cazul structurii `while`, se transforma in conditie de oprire, in cazul structurii `do-while`
+
+### 3.3 Cu numar finit de pasi
+- Instructiunea repetitiva cu numar finit de pasi, este instructiunea `for`
+- Sintaxa instructiunii `for` este urmatoarea:
+    ```c++
+        for (<initializare contor>;<conditie_oprire>;<incrementare_contor>) {
+            //executa set de instructiuni
+        }
+    ```
+- De retinut:
+    - Pasul de initializare contor se executa o singura data, anume la inceputul primei iteratii
+    - Pasul de verificare a conditiei de oprire se executa de fiecare data, inainte de a executa instructiunile ce se gasesc in interiorul structurii `for`
+        - In cazul in care conditia nu este indeplinita (are valoarea 0, sau false), iteratiile sunt oprite si programul continua executia instructiunilor care sunt in afara structurii (daca mai sunt altele, desigur)
+    - Pasul de incrementare a contorului se executa doar dupa ce s-au executat instructiunile din interiorul structurii `for`,
+
+### Caracteristici structuri iterative
+- Orice variabila declarata in interiorul structurilor repetitive este vizibila doar in cadrul acelor structuri
+- In cazul structurii `for`, contorul poate fi initializat atat in pasul de initializare cat si in afara, caz in care instructiunea ar arata in felul urmator, presupunand ca am numit contorul `i`:
+    ```c++
+        int i = 0;
+        for (i; i < 10; i++) {
+            cout << i << endl;
+        }
+    ```
+- Pentru a opri atat iteratia curenta cat si urmatoarele iteratii, se foloseste keyword-ul `break`.
+- Pentru a opri doar iteratia curenta, se foloseste keyword-ul `continue`.
+
+
+## Operatorii de incrementare
+- In C++, exista anumiti operatori, numiti operatori de incrementare care tot ce fac este sa mai incrementeze cu `1` o valoare existenta:
+    - de exemplu:
+        ```c++
+            int age = 10;
+            age++; // acest lucru este echivalent cu age = age + 1
+            age--; // acest lucru este echivalent cu age = age - 1
+        ```
+    - De retinut ca acesti operatori pot fi folositi atat in forma sufixa: `i++, i--` cat si in forma prefixa: `++i, --i`
+        - Daca se foloseste, de exemplu in header-ul unei structuri `for`, nu este  nici o diferenta.
+        - Daca sunt folositi in expresii, diferenta intre cele doua este ca forma sufixa va incrementa valoarea DUPA ce variabila va fi folosita, iar in cazul formei prefixe, mai intai va fi incrementata valoarea, si dupa aceea variabila va fi folosita cu noua valoare.
+    - Exemplu:
+        ```c++
+            int i = 10;
+            cout << i++ ; // va afisa 10
+            cout << i; // va afisa 11
+
+            int v = 12;
+            cout << ++i; // va afisa 13
+            cout << i; // va afisa 13
+        ```
 ## Exercitii propuse
 - Pentru o mai buna intelegere a codului de mai jos, este recomandat sa il evaluati fie prin simpla citire, fie pe o foaie. Comparati rezultatul obtinut cu valoarea returnata de catre un IDE (de exemplu Code::blocks)
 - In cazul in care credeti ca instructiunile nu sunt valide din punct de vede C++, ganditi-va care ar putea fi problema si verificati cu un IDE. De asemenea este recomandat sa observati mesajul de eroare returnat de catre IDE, pentru a va dezvolta abilitatile de programare si a rezolva mai usor problemele similare din viitor.
@@ -231,4 +289,32 @@ In C++ avem 3 tipuri de instructiuni repetitive:
         default:
             cout << "Ati introdus un caracter care nu face parte din [a,e,i,o,u]";
     }
+    ```
+3. Ce se va afisa in urma rularii urmatoarei bucate de cod:
+    ```c++
+        int i = 0;
+        while (i <= 10) {
+            if (i % 2 == 0) {
+                i++;
+                continue;
+            }
+            cout << i;
+            i++;
+        }
+    ```
+4. Ce se va afisa in urma rularii urmatoarei bucate de cod: 
+    ```c++
+        int i = 0;
+        while (i <= 10) {
+            if (i > 5) {
+                break;
+            }
+            cout << i;
+            i++;
+        }
+    ```
+5. Ce se va afisa in urma rularii urmatoarei bucati de cod:
+    ```c++
+        int i = 7;
+        cout << i++ + ++i;
     ```
