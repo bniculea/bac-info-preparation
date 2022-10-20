@@ -239,6 +239,67 @@ In C++ avem 3 tipuri de instructiuni repetitive:
             cout << ++i; // va afisa 13
             cout << i; // va afisa 13
         ```
+
+## Operatorii relaționali
+Printre operatorii relationali, avem:
+- `<`- Mai mic
+- `>`- Mai mare
+- `<=`- Mai mic sau egal
+- `>=`- Mai mare sau egal
+- `==`- Egal
+- `!=`- Diferit
+
+Un operatori relațional stabilește dacă între două numere (operanzii) are loc o anumită relație. Rezultatul acestei operații este adevărat sau fals.
+In urma evaluarii unei operatii cu un operator logic, rezultatul poate avea ca si valoare:
+- 1 dacă relația este adevărată
+- 0 dacă relația este falsă
+
+- Exemplu: Consideram ca avem `N = 11` si `M = 3`. Astfel avem:
+    - mai mic <; `N < M` este fals, adică 0
+    - mai mare >; `N > M` este adevărat, adică 1
+    - mai mic sau egal <=; `M <= N` este 1
+    - mai mare sau egal >=; `M >= N` este 0
+    - operația de egalitate == ; `N == M` este fals, adică 0
+    - operația de neegalitate (diferit, not egal) !=; `N != M` este adevărat, adică 1.
+### IMPORTANT
+    - Este foarte usor sa gresim si sa folosim `=` in loc de `==` cand vrem sa comparam. Operatie care e valida din punct de vedere al sintaxei dar care va duce, in cele mai multe cazuri, la o logica eronata.
+
+## Operatorii logici
+Printre acestia avem:
+- `!` - Negatie
+- `||` - SAU
+- `&&` - SI
+
+
+- În C++, operatorii logici pot fi aplicați oricăror valori numerice, și au ca rezultat una din valorile 0 sau 1. În exemplele de mai jos vom folosi literalii true și false, de tip bool.
+
+### `Negația: !`
+
+- `! true` este `false`. Orice valoare nenulă negată devine 0.
+``! false` este `true`. `40 negat devine 1.
+
+### `Disjuncția: ||`
+
+`false` || `false` → `false`
+`false` || `true` → `true`
+`true` || `false` → `true`
+`true` || `true` → `true`
+
+### `Conjuncția: &&`
+
+`false` && `false` → `false`
+`false` && `true` → `false`
+`true` && `false` → `false`
+`true` && `true` → `true`
+
+### DE RETINUT!
+- Operatorii logici SAU / SI, sunt operatori care scurtcircuiteaza operatiile:
+    - Sa consideram ca avem urmatoarele expresii:
+        - `10 > 3 || 4 > 1`
+            - In acest caz, a doua comparatie nu va mai avea loc, este suficient sa stim ca o expresie este adevarata
+        - `10 > 11 && 2 > 3`
+            - In acest caz, la fel, a doua comparatie nu va mai avea loc, este suficient sa stim ca o expresie este falsa. 
+
 ## Exercitii propuse
 - Pentru o mai buna intelegere a codului de mai jos, este recomandat sa il evaluati fie prin simpla citire, fie pe o foaie. Comparati rezultatul obtinut cu valoarea returnata de catre un IDE (de exemplu Code::blocks)
 - In cazul in care credeti ca instructiunile nu sunt valide din punct de vede C++, ganditi-va care ar putea fi problema si verificati cu un IDE. De asemenea este recomandat sa observati mesajul de eroare returnat de catre IDE, pentru a va dezvolta abilitatile de programare si a rezolva mai usor problemele similare din viitor.
@@ -318,3 +379,10 @@ In C++ avem 3 tipuri de instructiuni repetitive:
         int i = 7;
         cout << i++ + ++i;
     ```
+
+### Urmatoarele exercitii sunt bucati din variante propuse pentru bacalaureat:
+
+- ![Exercitiu operartori logici](./images/ex1.png "Text to show on mouseover")
+- ![Exercitiu operartori logici](./images/ex2.png "Text to show on mouseover")
+- ![Exercitiu operartori logici](./images/ex3.png "Text to show on mouseover")
+- ![Exercitiu operartori logici](./images/ex4.png "Text to show on mouseover")
