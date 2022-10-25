@@ -221,6 +221,144 @@
         - Divizorii primi sunt divizorii lui `n`, care la randul lor au ca divizori doar pe 1 si pe ei insisi
 
 
-### Algoritmi fundamentali pentru divizori (proprii, improprii, primi)
+### Algoritmi fundamentali pentru divizori 
+1. Afisare divizori proprii ai lui `n`
+    ```c++
+        void afisareDivizori(int n) {
+            for (int i = 1; i <= n / 2;i++) {
+                // Daca n se divide exact la i
+                // Inseamna ca i este divizor al lui `n`
+                if (n % i == 0) {
+                    cout << i << endl;
+                }
+            }
+        }
+    ```
 
-1. Divizorii proprii ai lui `n`:
+
+2. Afisare divizori primi `n`
+    ```c++
+        void afisareDivizoriPrimi(int n) {
+            int divizor = 2;
+            while (n > 1 && n % divizor == 0) {
+                cout << divizor;
+                n = n / divizor;
+                divizor++;
+            }
+        }
+    ```
+3. Afisare divizor primi `n` - Varianta optimizata
+    ```c++
+        void afisareDivizoriPrimi(int n) {
+            // Optimizarea consta in faptul ca mergem pana la
+            // i <= sqrt(n) si pentru a evita importul de cmath, i * i <= n este echivalent cu i <= sqrt(n-+)
+            for (int i = 2; i * i <= n; i++) {
+                if (n % i == 0) {
+                    cout << i << endl;
+                }
+            }
+        }
+    ```
+### DE RETINUT:
+- `N` are numar impar de divizor daca este patrat perfect (de exemplu 36, etc.)
+- `N` are exact 3 divizori daca este patrat perfect de numar prim (de exemplu 9, 25, etc.)
+- `N` este perfect daca este egal cu suma divizorilor mai mici decat el insusi.
+- `A` si `B` sunt numere `prietene` daca `A` este egal cu suma divizorilor lui `B`, mai mici decat `B`, iar `B` este egal cu suma divizorilor lui `A`, mai mici decat `A`.
+
+
+## III Primalitate. Testarea primalitatii unui numar `n`
+- Un numar este prim, daca acesta are ca divizori doar pe 1 si pe el insusi.
+    ```c
+        int estePrim (int n) {
+            int result = 1;
+            // Cum un numar trebuie sa aiba pe 1 si pe el insusi ca divizori
+            // daca n < 2 atunci rezultatul va fi fals
+            if (n < 2) {
+                result = 0;
+            }
+            else {
+                // Iteram de la 2 pana la radical din n
+                for (int i = 2; i * i <= n; i++) {
+                    // Daca n se imparte exact la i
+                    // Inseamna ca nu este prim
+                    if (n % i == 0) {
+                        result = 0;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+    ```
+
+## IV Cel mai mare divizor comun. Cel mai mare multiplu comun
+
+1. Algoritmul  lui Euclid bazat pe impartiri succesive. Varianta eficienta!
+    ```c++
+        int cmmdc(int a, int b) {
+            while (b != 0) {
+                int rest = a % b;
+                a = b;
+                b = rest;
+            }
+            return a;
+        }
+    ```
+2. Algoritmul lui Euclid  bazat pe scaderi succesive. Mai putin eficient
+    ```c++
+        int cmmdc(int a, int b) {
+            while (b != a) {
+                if (a > b) {
+                    a = a - b;
+                }
+                else {
+                    b = b - a;
+                }
+            }
+            return a;
+        }
+
+    ```
+### Cel mai mic multiplu comun se poate determina folosind formula de calcul:  
+- CMMMC(a, b) = a * b / cmmdc (a, b)
+
+- Daca numerele a si b sunt multiple intre ele, `cmmdc(a, b)` = 1.
+
+## V. Siruri Recurente. Sirul lui Fibonacii.
+- Sirul lui Fibonacii este sirul cu proprietatea ca oricare numar, este suma ultimelor doua numere. Primele 2 numere din sir sunt `0` si `1`.
+    - De exemplu, primele 6 numere sunt:
+        - `0, 1, 1, 2, 3, 5`
+
+### 1. Algoritm pentru generarea primilor n termeni din sirul Fibonacci
+```c++
+    void afisareSirFibonacii(int n) {
+        int f1 = 0;
+        int f2 = 1;
+        cout << f1 << " ";
+        for (int i = 1; i < n; i++) {
+            cout << f2 << " ";
+            int next = f1 + f2;
+            f1 = f2;
+            f2 = next;
+        }
+    }
+```
+
+### 2. Algoritm pentru generarea primilor n termeni pari din sirul Fibonacci
+```c++
+    void afisareSirPareFibonacii(int n) {
+        int f0 = 1;
+        int f1 = 1;
+        int f2;
+        while (n > 0) {
+            f2 = f0 + f1;
+            if (f2 % 2 == 0) {
+                cout << f2 << " ";
+                n = n - 1;
+            }
+            f0 = f1;
+            f1 = f2;
+        }
+    }
+```
