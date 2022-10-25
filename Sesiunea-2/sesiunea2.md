@@ -362,3 +362,15 @@
         }
     }
 ```
+
+## VI. Baze de enumeratie. Conversii intre baza `10` si baza `b`, `2<= b <=9`, pentru un numar `n`
+1. Din 10 in `b`:
+    - Conversia din baza 10 in baza `b`, este realizata prin impartiri succesive la b, cat timp n > 0.
+    - Resturile, in ordine inversa obtinerii lor, formeaza numarul in baza `b`, egal cu numarul `n`, in baza 10.
+2. Din `b` in 10:
+    - Conversia din baza `b` in baza 10, este realizata prin inmultire cu puterile bazei b.
+    - Fiecare cifra a numarul in baza b, de la dreapta la stanga, este inmultita cu `b` la puterea `x`, unde x = [0, len), unde `len` este lungimeaza numarului in baza `b`.
+    - Exemplu: convertim numarul `1001011` din baza 2 in baza 10:
+        - 1 * 2^0 + 1 * 2^1 + 0 * 2^2 + 1 * 2^3 + 0 * 2^4 + 0 * 2^5 + 1 * 2^6 = 75
+
+### 1. Algoritm conversie din baza `n` in baza `b`
