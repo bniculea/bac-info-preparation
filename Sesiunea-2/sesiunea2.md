@@ -212,3 +212,15 @@
     ```
 
 ## II. Divizibilitate. Algoritmi care prelucreaza divizorii proprii/improprii/primi ai unui numar.
+- Cand vorbim de divizori, trebuie sa aducem in vedere urmatoarele 3 tipuri de divizori:
+    1. Divizori improprii:
+        - Prin divizori improprii intelegem setul cuprins din numerele 1 si `n` unde `n` este numarul pentru care dorim sa aflam divizorii
+    2. Divizori proprii
+        - Restul divizorilor care nu apartin setului cu divizori improprii
+    3. Divizori primi
+        - Divizorii primi sunt divizorii lui `n`, care la randul lor au ca divizori doar pe 1 si pe ei insisi
+
+
+### Algoritmi fundamentali pentru divizori (proprii, improprii, primi)
+
+1. Divizorii proprii ai lui `n`:
