@@ -370,5 +370,40 @@
     - Exemplu: convertim numarul `1001011` din baza 2 in baza 10:
         - 1 * 2^0 + 1 * 2^1 + 0 * 2^2 + 1 * 2^3 + 0 * 2^4 + 0 * 2^5 + 1 * 2^6 = 75
 
-## Tema
+## Exercitii
+![Exercitiu operartori logici](./images/ex1.png "Text to show on mouseover")
+![Exercitiu operartori logici](./images/ex1.1.png "Text to show on mouseover")
 
+---------------------------------------------------
+---------------------------------------------------
+![Exercitiu operartori logici](./images/ex2.png "Text to show on mouseover")
+
+---------------------------------------------------
+---------------------------------------------------
+![Exercitiu operartori logici](./images/ex3.png "Text to show on mouseover")
+
+---------------------------------------------------
+---------------------------------------------------
+![Exercitiu operartori logici](./images/ex4.1.png "Text to show on mouseover")
+![Exercitiu operartori logici](./images/ex4.2.png "Text to show on mouseover")
+
+---------------------------------------------------
+---------------------------------------------------
+![Exercitiu operartori logici](./images/ex5.png "Text to show on mouseover")
+
+---------------------------------------------------
+---------------------------------------------------
+![Exercitiu operartori logici](./images/ex6.png "Text to show on mouseover")
+
+---------------------------------------------------
+---------------------------------------------------
+![Exercitiu operartori logici](./images/ex7.png "Text to show on mouseover")
+∏
+---------------------------------------------------
+![Exercitiu operartori logici](./images/ex8.png "Text to show on mouseover")
+
+---------------------------------------------------
+---------------------------------------------------
+![Exercitiu operartori logici](./images/ex9.png "Text to show on mouseover")
+
+---------------------------------------------------
