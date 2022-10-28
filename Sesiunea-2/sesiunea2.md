@@ -238,27 +238,24 @@
 
 2. Afisare divizori primi `n`
     ```c++
-        void afisareDivizoriPrimi(int n) {
-            int divizor = 2;
-            while (n > 1 && n % divizor == 0) {
-                cout << divizor;
+       void afisareDivizorPrimi(int n) {
+        int divizor = 2;
+        while (n > 1) {
+            int contorDivizori = 0;
+            while (n % divizor == 0) {
                 n = n / divizor;
-                divizor++;
+                contorDivizori += 1;
             }
-        }
-    ```
-3. Afisare divizor primi `n` - Varianta optimizata
-    ```c++
-        void afisareDivizoriPrimi(int n) {
-            // Optimizarea consta in faptul ca mergem pana la
-            // i <= sqrt(n) si pentru a evita importul de cmath, i * i <= n este echivalent cu i <= sqrt(n-+)
-            for (int i = 2; i * i <= n; i++) {
-                if (n % i == 0) {
-                    cout << i << endl;
-                }
+
+            if (contorDivizori != 0) {
+                cout << divizor << endl;
             }
+
+            divizor = divizor + 1;
         }
+    }
     ```
+
 ### DE RETINUT:
 - `N` are numar impar de divizor daca este patrat perfect (de exemplu 36, etc.)
 - `N` are exact 3 divizori daca este patrat perfect de numar prim (de exemplu 9, 25, etc.)
@@ -280,7 +277,7 @@
                 // Iteram de la 2 pana la radical din n
                 for (int i = 2; i * i <= n; i++) {
                     // Daca n se imparte exact la i
-                    // Inseamna ca nu este prim
+                    // Ins-eamna ca nu este prim
                     if (n % i == 0) {
                         result = 0;
                         break;
@@ -373,4 +370,5 @@
     - Exemplu: convertim numarul `1001011` din baza 2 in baza 10:
         - 1 * 2^0 + 1 * 2^1 + 0 * 2^2 + 1 * 2^3 + 0 * 2^4 + 0 * 2^5 + 1 * 2^6 = 75
 
-### 1. Algoritm conversie din baza `n` in baza `b`
+## Tema
+
