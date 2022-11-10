@@ -52,7 +52,7 @@
         fin>>x;
     }
 ```
-- Testarea sfarsitului de fisier se poate face folosind functia eof() care nu citeste, ci doar testeaza daca anterior a fost detectat sfarsitul de fisier. Apelul functiei se face astfel:
+- Testarea sfarsitului de fisier sgitstae poate face folosind functia eof() care nu citeste, ci doar testeaza daca anterior a fost detectat sfarsitul de fisier. Apelul functiei se face astfel:
 ```c++
    nume_logic.eof();
 ```
