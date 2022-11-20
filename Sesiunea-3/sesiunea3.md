@@ -52,7 +52,7 @@
         fin>>x;
     }
 ```
-- Testarea sfarsitului de fisier sgitstae poate face folosind functia eof() care nu citeste, ci doar testeaza daca anterior a fost detectat sfarsitul de fisier. Apelul functiei se face astfel:
+- Testarea sfarsitului de fisier se poate face folosind functia eof() care nu citeste, ci doar testeaza daca anterior a fost detectat sfarsitul de fisier. Apelul functiei se face astfel:
 ```c++
    nume_logic.eof();
 ```
@@ -61,6 +61,9 @@
 ```c++
    nume_logic.close();
 ```
+
+`UNDE nume_logic este numele variabilei de tipul ifstrem/ofstream`
+
 ## Exercitii propuse
 1. Fisierul text bac.txt contine, pe o singura linie, cel mult 1000 de numere naturale nenule, numerele fiind separate prin cate un spatiu. Scrieti un program C/C++ care citeste de la tastatura un numar natural nenul n si numerele din fisierul bac.txt si care afiseaza pe ecran, separate prin cate un spatiu, toate numerele din fisier care sunt divizibile cu n. Daca fisierul nu contine niciun astfel de numar, atunci se va afisa pe ecran mesajul NU EXISTA.
 - Exemplu: daca fisierul bac.txt contine numerele: 3 100 40 70 25 5 80 6 3798,
