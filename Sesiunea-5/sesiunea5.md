@@ -104,4 +104,85 @@
     }
 
     ```
-2. 
+2.  Solutie:
+    ```c++
+    #include <iostream>
+
+    int getMinimumValue(int a, int b, int c, int d);
+    int getMinimumValue(int a, int b, int c);
+    int getMinimumValue(int a, int b);
+
+    using namespace std;
+
+    int main() {
+        int m = 5, n = 4;
+        cin >> m >> n;
+        int matrice[m][n];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; i < n; i++) {
+                cin >> matrice [i][j];
+            }
+        }
+
+        int nisipAdaugat = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int minValue;
+                int parcelaNord = matrice[i-1][j];
+                int parcelaEst = matrice[i][j + 1];
+                int parcelaSud = matrice[i + 1][j];
+                int parcelaVest = matrice[i][j-1];
+                if (i == 0) {
+                    if (j == 0) {
+                        minValue = getMinimumValue(parcelaEst, parcelaSud);
+                    } else if (j == n-1) {
+                        minValue = getMinimumValue(parcelaSud, parcelaVest);
+                    } else {
+                        minValue = getMinimumValue(parcelaSud, parcelaVest, parcelaEst);
+                    }
+                } else if (i == m-1) {
+                    if (j == 0) {
+                        minValue = getMinimumValue(parcelaNord, parcelaEst);
+                    } else if (j == n-1) {
+                        minValue = getMinimumValue(parcelaNord, parcelaEst);
+                    } else {
+                        minValue = getMinimumValue(parcelaNord, parcelaVest, parcelaEst);
+                    }
+                } else {
+                    minValue = getMinimumValue(parcelaNord, parcelaEst, parcelaVest, parcelaSud);
+                }
+
+
+                if (matrice[i][j] < minValue) {
+                    int diferenta = minValue - matrice[i][j];
+                    matrice[i][j] = diferenta;
+                    nisipAdaugat += diferenta;
+                }
+            }
+        }
+
+        cout << "S-au adaugat extra: " << nisipAdaugat << " metri cubi de nisip.";
+    }
+
+    int getMinimumValue(int a, int b) {
+        if (a < b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
+    int getMinimumValue(int a, int b, int c) {
+        int minBC = getMinimumValue(b, c);
+        return getMinimumValue(a, minBC);
+    }
+
+    int getMinimumValue(int a, int b, int c, int d) {
+        int min = a;
+        if (b < min) min = b;
+        if (c < min) min = c;
+        if (d <min) min = d;
+        return min;
+    }
+    ```
