@@ -83,12 +83,12 @@
 
 
             // Afisare prima coloana
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < n; i++) {
                 cout << matrice [i][0] << " ";
             }
 
-            // Afisare prima linie
-            for (int i = 1; i < 5; i++) {
+            // Afisare ultima linie
+            for (int i = 1; i < n; i++) {
                 cout << matrice [n-1][i] << " ";
             }
 
