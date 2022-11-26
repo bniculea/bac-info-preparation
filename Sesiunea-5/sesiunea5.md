@@ -186,3 +186,46 @@
         return min;
     }
     ```
+3. 
+- a. In limbaj natural:
+    - Citim primele doua numere care reprezinta intervalul in care cautam numerele.
+    - Dupa care citim numerele de pe linia urmatoare, unul cate unul
+    - Initializam o variabila care va reprezenta ultimul numarul valid citit, cu -1.
+    - Un numar este valid daca:
+            - Este mai mare sau egal cu x
+            - Este mai mic sau egal cu y
+            - Este mai mare strict decat ultimul numar valid citit
+    - Initializam un contor ce va contoriza numerele valide.
+    - In cazul in care, ajungem la un numar care este mai mare decat y, stim ca nu se mai respecta conditia din enunt si astfel putem incheia contorizarea.
+    - Programul este eficient deoarece
+        1. Parcurgem cel mult o data fisierul
+        2. Stiind ca numerele sunt ordonate crescatoare, in cazul in care intalnim un numar in afara intervalului, am oprit contorizarea.
+- b. Solutie
+```c++
+        #include <iostream>
+        #include <fstream>p
+
+        using namespace std;
+
+
+        int main()
+        {
+            int x,y;
+            ifstream fin("bac.txt");
+            fin >> x >> y;
+            int lastValidDigit = -1;
+            int counter = 0;
+            while(!fin.eof()) {
+                int number;
+                fin >> number;
+                if (number >= x && number > lastValidDigit && number <= y) {
+                    counter++;
+                    lastValidDigit = number;
+                } else if (number > y) {
+                    break;
+                }
+            }
+            cout << counter;
+            fin.close();
+        }
+```
