@@ -131,3 +131,9 @@ int main()
 	cout << x << " " << cnt << " ";
 }
 ```
+
+
+
+## Tema pentru data viitoare
+- Varianta 2 de pe site-ul modinfo(https://www.modinfo.ro/bac/variante-test-2021/info/v2.pdf)
+- Primele 10 probleme, pbinfo de aici: https://www.pbinfo.ro/?pagina=probleme-lista&disciplina=0&clasa=10&tag=10&subtag=11&dificultate=1&folosesc_consola=-1&eticheta= pentru imbunatatirea cunostintelor in a folosi functiile din string.h (strcpy, strcat, etc) IMPERIOS NECESAR PENTRU BAC
