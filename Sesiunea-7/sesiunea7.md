@@ -145,3 +145,132 @@
         }
 
     ```
+
+2. Solutie:
+    ```c++
+    #include <iostream>
+
+    using namespace std;
+
+    int main() {
+        int n;
+        cin >> n;
+        int matrice[6][6] = {
+                {2,0,0,2,1,3},
+                {3,1,3,1,2,0},
+                {2,1,3,3,2,0},
+                {0,2,1,3,1,1},
+                {3,1,2,0,0,2},
+                {0,0,0,2,1,3},
+        };
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cin >> matrice[i][j];
+            }
+        }
+        int existaZone = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int zonaNord = matrice[i-1][j];
+                int zonaEst = matrice[i][j+1];
+                int zonaSud = matrice[i+1][j];
+                int zonaVest = matrice[i][j-1];
+                int codElementCurent = matrice[i][j];
+                if (i == 0) {
+                    if (j == 0) {
+                        if (codElementCurent == 3 && zonaEst != 0 && zonaSud != 0){
+                            existaZone = 1;
+                            cout << i+1 <<" ";
+                        }
+                    } else if (j == n-1) {
+                        if ( codElementCurent == 3 && zonaVest != 0 && zonaSud != 0){
+                            existaZone = 1;
+                            cout << i+1 <<" ";
+                        }
+                    } else {
+                        if (codElementCurent == 3 && zonaVest != 0 && zonaEst != 0 && zonaSud != 0){
+                            existaZone = 1;
+                            cout << i+1 <<" ";
+                        }
+                    }
+                } else if (i == n-1) {
+                    if (j == 0) {
+                        if (codElementCurent == 3 && zonaNord != 0 && zonaEst != 0){
+                            existaZone = 1;
+                            cout << i+1 <<" ";
+                        }
+                    } else if (j == n-1) {
+                        if (codElementCurent == 3 &&  zonaVest != 0 && zonaNord != 0){
+                            existaZone = 1;
+                            cout << i+1 <<" ";
+                        }
+                    } else {
+                        if (codElementCurent == 3 &&  zonaVest != 0 && zonaEst != 0 && zonaNord != 0){
+                            existaZone = 1;
+                            cout << i+1 <<" ";
+                        }
+                    }
+                } else {
+                    if (codElementCurent == 3 && zonaNord != 0 && zonaEst != 0 && zonaSud!= 0 && zonaVest != 0) {
+                        existaZone = 1;
+                        cout << i+1 << " ";
+                    }
+                }
+            }
+        }
+        if (!existaZone) {
+            cout << "nu exista";
+        }
+
+    }
+
+    ```
+
+3. Solutie:
+    - In limbaj natural:
+        ```json
+            Citim primele n numere care reprezinta x-urile, dupa care, citim y-urile unul cate unul.
+            Imediat ce gasim o pereche ce nu corespunde cerintei, intrerupem citirea restului de numere.
+            Astfel, eficienta programului se datoreaza faptului ca evitam citirea intregului fisier, imediat cum am gasit un element (y) ce invalideaza
+        ```
+    - Cod:
+        ```c++
+        #include <iostream>
+        #include <fstream>
+
+        using namespace std;
+
+        int main() {
+            int n;
+            int pOrdonate = 1;
+            ifstream fin("bac.txt");
+
+            fin >> n;
+            int xPairs[n];
+
+            for (int i = 0; i < n; i++) {
+                fin >> xPairs[i];
+            }
+
+            for (int i = 0; i < n; i++) {
+                int yPairElement;
+                fin >> yPairElement;
+                if ( (xPairs[i] % 2) == (yPairElement % 2)) {
+                    continue;
+                } else {
+                    if (xPairs[i] <=  yPairElement) {
+                        pOrdonate = 0;
+                        break;
+                    }
+                }
+            }
+
+            if (pOrdonate == 1) {
+                cout << "DA";
+            } else {
+                cout << "NU";
+            }
+            fin.close();
+        }
+
+        ```
