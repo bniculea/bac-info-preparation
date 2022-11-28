@@ -96,5 +96,52 @@
             }
         }
     ```
-3. 
+3. Se va afisa:
+    ```json
+        #include <iostream>
+        #include <string.h>
+
+        using namespace std;
+
+        int main() {
+            char s1[31], s2[31];
+            int p;
+            strcpy(s1, "plantau fistic");
+            p = strchr(s1, ' ')-s1; //p = 7
+            strcpy(s2, s1+p+1); //s2 va contine "fistic"
+            strcpy(s1+p-1, s2+2); //s1 = "plantastic"
+            strcpy(s2+1, s1+2); //s2="fantastic"
+            cout << p << s2; // 7fantastic
+        }
+    ```
 ### Subiectul III
+1. Solutie:
+    ```c++
+        #include <iostream>
+        #include <string.h>
+
+        using namespace std;
+
+        int DoiTrei(int n);
+
+        int main() {
+            int n;
+            cin >> n;
+            cout <<DoiTrei(n);
+        }
+
+        int DoiTrei(int n) {
+            int rezult = 1;
+            while (n > 0) {
+                int ultimaCifra = n%10;
+                if (ultimaCifra != 2 && ultimaCifra != 3) {
+                    rezult = 0;
+                    break;
+                }
+                n = n/10;
+            }
+
+            return rezult;
+        }
+
+    ```
