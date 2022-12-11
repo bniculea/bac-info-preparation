@@ -59,7 +59,6 @@
         pana cand ((c1-c2)* s) >= 0 si n <= 9
         scrie s, ' ', n
     ```
-
 2. 
     ```c++
         struct polinom {
@@ -149,6 +148,14 @@
         int n;
         cin >> n;
         int matrice[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cout << "Enter matrice["<<i<<"][" << j <<"]: ";
+                cin >> matrice[i][j];
+            }
+        }
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (j == (n-i-1)) {
