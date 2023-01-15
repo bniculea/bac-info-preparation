@@ -41,33 +41,49 @@
     - Solutie:
         ```c++
             #include <iostream>
-            #include <cstring>
+            #include<string.h>
 
             using namespace std;
 
-            int main() {
+            int este_consoana(char ch);
+            int este_vocala(char chr);
 
-                char s[256];
-                cin.get(s, 256);
-                char vowels[] = {'a','e','i', 'o', 'u', '\0'};
-                int count =0;
-
-                for (int i = 1; i< strlen(s)-1;i++) {
-                    char leftLetter = s[i - 1];
-                    char rightLetter = s[i + 1];
-                    char currentLetter = s[i];
-                    if (leftLetter == ' ' || rightLetter == ' ') {
-                        continue;
-                    }
-                    if (strchr(vowels, currentLetter) != NULL &&
-                        (strchr(vowels, leftLetter)) == NULL &&
-                        strchr(vowels, rightLetter) == NULL
-                        ) {
-                        count++;
+            int main()
+            {
+                char sir[256];
+                int contor = 0;
+                cout << "Introduceti sirul:";
+                cin.getline(sir, 256);
+                for (int i = 1; i < strlen(sir) - 1; i++)
+                {
+                    if (este_vocala(sir[i]) && este_consoana(sir[i - 1]) && este_consoana(sir[i + 1]))
+                    {
+                        contor++;
                     }
                 }
-                cout<< count;
+                cout << contor;
+
                 return 0;
+            }
+            int este_vocala(char chr)
+            {
+                if (strchr("aeiou", chr) != NULL)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            int este_consoana(char ch) {
+                if (ch > 'a' && ch <= 'z' && !este_vocala(ch)) {
+                    return 1;
+                }
+                else {
+                    return 0;
+                }
             }
         ```
 3. https://www.pbinfo.ro/probleme/11/vocale
