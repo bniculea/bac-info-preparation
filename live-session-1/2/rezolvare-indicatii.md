@@ -1,0 +1,54 @@
+# Rezolvare + Indicatii Test nr 1 - Carte Vlad
+
+## Subiectul I
+1. c
+2. b
+3. c
+4. c
+5. 8
+
+## Subiectul II
+1. Raspuns:
+    - a. Afiseaza cifra de control adica suma cifrelor fiecarui raspuns intermediar => 25 => 7
+    - b. Cel mai mic 10004, cel mai mare 99995
+    - c. 
+    ```c++
+        #include <iostream>
+        using namespace std;
+        int main() {
+            int n;
+            cin >> n;
+            while (n > 9) {
+                int s = 0;
+                while (n != 0) {
+                    s = s + n % 10;
+                    n = n/10;
+                }
+                n = s;
+            }
+            cout << n;
+            return 0;
+        }
+    ```
+    d. 
+    ```C++
+        citeste n
+        (numar natural nenul de cel mult 9 cifre)
+        cat timp n > 9
+            s <- 0
+            cat timp n <> 0
+            daca (n > 0) atunci
+                executa
+                    s <- s + n %10
+                    n <- [n/10]
+                cat timp(n > 0)
+            n = s
+        scrie s
+    ```
+2. Se va genera matrice si se va observa ca `a[3][3] = 16` si suma elementelor de pe prima linie este `4`
+
+3. Rezolvare:
+    ```c++
+        float med = (x.nota1 + x.nota2) / 2.0;
+    ```
+    - NOTA: este posibil ca in carte autorul sa se refere la variabila e pe care a declarat-o si sa fie gresit enuntul. In schimb, deoarece media este o valoare reala, pentru a nu pierde partea de dupa virgula, trebuie sa ne asiguram ca impartim la 2.0
