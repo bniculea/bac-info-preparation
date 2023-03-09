@@ -118,3 +118,37 @@
             }
 
         ```
+3. 
+    - Explicatie eficienta:
+        - Programul este eficient din punct de vedere al memoriei deoarece utilizam doar doua variabile pentru a citii si a analizat numere din fisier. Un alt atuu al eficientei programului este faptul ca citim o singura data fisierul.
+    - De retinut:
+        - Atentie la ultimul element citit!!
+    - Solutie:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+            using namespace std;
+
+            int main() {
+                ifstream fin ("bac.in");
+                ofstream fout ("bac.out");
+
+                long int numarAnterior, numarCurent;
+                int aparitii = 1;
+                fin >> numarAnterior;
+                while (fin >> numarCurent) {
+                    if (numarCurent == numarAnterior) {
+                        aparitii++;
+                    } else {
+                        fout << numarAnterior << " " << aparitii << endl;
+                        aparitii = 1;
+                    }
+                    numarAnterior = numarCurent;
+                }
+                fout << numarAnterior << " " << aparitii << endl;
+                fin.close();
+                fout.close();
+                return 0;
+            }
+
+        ```
