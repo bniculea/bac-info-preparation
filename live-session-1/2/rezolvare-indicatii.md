@@ -52,3 +52,44 @@
         float med = (x.nota1 + x.nota2) / 2.0;
     ```
     - NOTA: este posibil ca in carte autorul sa se refere la variabila e pe care a declarat-o si sa fie gresit enuntul. In schimb, deoarece media este o valoare reala, pentru a nu pierde partea de dupa virgula, trebuie sa ne asiguram ca impartim la 2.0
+
+## Subiectul III
+
+1. 
+- De retinut:
+    - Divizorii proprii ai unui numar sunt toti divizorii mai putin 1 si numarul insusi.
+    - Solutia va combina algoritmul pentru determinarea divizorilor unui numar cu algoritmul pentru a determina daca un numar este prim sau nu.
+- Solutie:
+    ```c++
+        #include <iostream>
+
+        using namespace std;
+        int calcul(int n);
+
+        int main() {
+        
+            cout << calcul(15);
+            return 0;
+        }
+
+        int calcul(int n) {
+            int suma = 0;
+            for (int i = 2; i <= n/2; i++) {
+                if ( n % i == 0) {
+                    int estePrim = 1;
+                    for (int j = 2; j <= i/2; j++) {
+                        if (i % j == 0) {
+                            estePrim = 0;
+                            break;
+                        }
+                    }
+                    if (estePrim) {
+                        suma += i;
+                    }
+                }
+            }
+
+            return suma;
+        }
+
+    ```
