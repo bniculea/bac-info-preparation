@@ -93,3 +93,28 @@
         }
 
     ```
+
+2. 
+    - Indicatii:
+        - Chiar daca se poate afisa direct raspunsul, pentru a evita penalizari, se va construi o alta variabila ce va tine rezultatul
+    - Solutie:
+        ```c++
+            #include <iostream>
+            #include <cstring>
+            using namespace std;
+
+            int main() {
+
+                char text[31], vocale[31];
+                int j = 0;
+                cin >> text;
+                for (int i = 0; i < strlen(text); i++) {
+                    if (strchr("aeiou", text[i]) != NULL) {
+                        vocale[j++] = text[i];
+                    }
+                }
+                cout << vocale;
+                return 0;
+            }
+
+        ```
