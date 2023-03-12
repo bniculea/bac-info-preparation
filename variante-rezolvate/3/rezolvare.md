@@ -53,5 +53,31 @@
 2. Raspuns: Vom folosi distanta dintre 2 puncte
     ```c++
         float distantaAO = sqrt((A.x - 0) * (A.x - 0) + (A.y - 0) * (A.y - 0)));
-        float distantaBO = sqrt((A.x - 0) * (A.x - 0) + (A.y - 0) * (A.y - 0)));
+        float distantaBO = sqrt((B.x - 0) * (B.x - 0) + (B.y - 0) * (B.y - 0)));
+        distantaAO == distantaBO;
+    ```
+3. Raspuns:
+    ```c++
+        using namespace std;
+        int main()
+        {
+
+            char s[31];
+            int i;
+            strcpy(s, "bac2723cunota37");
+            for (int i = 0; i < strlen(s); i++) {
+                if (s[i]== '7') {
+                    cout << '0';
+                } else if (s[i] == '3') {
+                    cout << '1';
+                } else {
+                    cout << s[i];
+                }
+            }
+            return 0;
+        }
+    ```
+## Subiectul III
+1. Raspuns:
+    ```c++
     ```
