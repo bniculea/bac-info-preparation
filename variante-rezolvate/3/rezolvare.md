@@ -80,4 +80,49 @@
 ## Subiectul III
 1. Raspuns:
     ```c++
+        #include <iostream>
+        #include <fstream>
+        using namespace std;
+
+        void sub(int a, int b, int &n, int v[]);
+
+        int main() {
+            int n = 10, v[] = {3551,149,3798,502,75,2515,51,151,489,653}, a = 5, b = 2;
+            sub(a, b, n,v);
+            cout << endl << "n = " << n << endl;
+            cout << "V = ";
+            for (int i = 0; i < n; i++) {
+                cout << v[i] << " ";
+            }
+            return 0;
+        }
+        void sub(int a, int b, int &n, int v[]) {
+            int contor = 0;
+            int i = 0;
+            while (i < n) {
+                int numar = v[i];
+                int areA = 0;
+                int areB = 0;
+                while(numar > 0) {
+                    int ultimaCifra = numar % 10;
+                    numar = numar / 10;
+                    if (ultimaCifra == a) {
+                        areA = 1;
+                    } else if (ultimaCifra == b) {
+                        areB = 1;
+                        break;
+                    }
+                }
+                if (areA && !areB) {
+                    for (int j = i; j < n; j++) {
+                        v[j] = v[j+1];
+                    }
+                    contor++;
+                    n--;
+                } else {
+                    i++;
+                }
+            }
+            n = contor;
+        }
     ```
