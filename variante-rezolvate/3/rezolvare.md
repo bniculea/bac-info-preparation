@@ -176,6 +176,9 @@
                         lungimeCurenta = 0;
                     }
                 }
+                if (lungimeCurenta > lungimeMaxima) {
+                    lungimeMaxima = lungimeCurenta;
+                }
                 cout << lungimeMaxima;
 
                 fin.close();
