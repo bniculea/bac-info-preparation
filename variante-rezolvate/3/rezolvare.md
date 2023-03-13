@@ -151,3 +151,34 @@
             return 0;
         }
     ```
+
+3. 
+    - Explicatie eficienta:
+        - Programul este eficient din punct de vedere al memoriei deoarece tinem in memorie doar cate un singur numar din fisier, impreuna cu doua contoare. Din punct de vedere al timpului, programul este eficient deoarece parcurgem o singura data fisierul text.
+    - Solutie:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+            using namespace std;
+
+            int main() {
+                ifstream fin ("bac.in");
+                int numarCitit;
+                int lungimeMaxima = 0;
+                int lungimeCurenta = 0;
+                while (fin >> numarCitit){
+                    if (numarCitit % 2 == 0) {
+                        lungimeCurenta++;
+                    } else {
+                        if (lungimeCurenta > lungimeMaxima) {
+                            lungimeMaxima = lungimeCurenta;
+                        }
+                        lungimeCurenta = 0;
+                    }
+                }
+                cout << lungimeMaxima;
+
+                fin.close();
+                return 0;
+            }
+        ```
