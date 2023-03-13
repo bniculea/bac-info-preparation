@@ -126,3 +126,28 @@
             n = contor;
         }
     ```
+
+2. Rezolvare:
+    ```c++
+        #include <iostream>
+        using namespace std;
+
+        int main() {
+            int n = 3, m = 5;
+            int matrice[n][m];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    matrice[i][j] = i + j + 1;
+                }
+            }
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    cout << matrice[i][j] << " ";
+                }
+                cout << endl;
+            }
+
+            return 0;
+        }
+    ```
