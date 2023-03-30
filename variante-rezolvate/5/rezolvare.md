@@ -125,3 +125,102 @@
         }
 
     ```
+
+## Subiectul III
+1. Solutie:
+    ```c++
+        #include <iostream>
+        using namespace std;
+
+        void NrImp(int x, int y, int &nr);
+
+        int main()
+        {
+            int nr = 0;
+            NrImp(4, 50, nr);
+            cout << nr;
+            return 0;
+        }
+
+        void NrImp(int x, int y, int &nr) {
+            int contorNumere = 0;
+            for(int i = x; i <= y; i++) {
+                int contorDivzori = 0;
+                for (int j = 1; j <= i; j++) {
+                    if (i % j == 0 && j % 2 != 0) {
+                        contorDivzori++;
+                    }
+                }
+                if (contorDivzori == 3) {
+                    contorNumere++;
+                }
+            }
+            nr = contorNumere;
+        }
+    ```
+
+2. Solutie:
+    ```c++
+        #include <iostream>
+        #include <string.h>
+
+        using namespace std;
+
+        int main()
+        {
+            char text[101], raspuns[101]="";
+            cin.getline(text, 101);
+            char *cuvant = strtok(text, " ");
+            while(cuvant != NULL) {
+                if (cuvant[strlen(cuvant)-1] == '.') {
+                    if (cuvant[0]=='S') {
+                        strcat(raspuns, "spe. ");
+                    } else if (cuvant[0] == 'F') {
+                        strcat(raspuns, "fam. ");
+                    } else {
+                        strcat(raspuns, "gen. ");
+                    }
+                } else {
+                    strcat(raspuns, cuvant);
+                    strcat(raspuns, " ");
+                }
+                cuvant = strtok(NULL, " ");
+            }
+            cout << raspuns;
+            return 0;
+        }
+
+    ```
+3. Solutie:
+    - a. In limbaj natural:
+        ```json
+            Solutia aleasa este eficienta din punct de vedere al timpului de executie deoarece algoritmul parcurge o singura data fisierul ce contine datele de intrare. In acelasi timp, algoritmul este eficient din punct de vedere al memoriei folosite, deoarece in orice moment al executiei, avem in memorie doar 2 numere din fisier si nu se folosesc alte structuri de date, afara de variabila care ne indica valoarea maxima si cea care ne indica numarul total de pasi.
+        ```
+    - b. C++:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+
+            int main()
+            {
+                ifstream fin("bac.txt");
+                int nrCitit, nrAnterior;
+                int max = -1;
+                int pasiTotali = 0;
+
+                while(fin >> nrCitit) {
+                    pasiTotali++;
+                    if (nrCitit > max) {
+                        max = nrCitit;
+                        cout << pasiTotali << " ";
+                    } else if (nrCitit == max && nrCitit != nrAnterior) {
+                        cout << pasiTotali << " ";
+                    }
+                    nrAnterior = nrCitit;
+                }
+                fin.close();
+                return 0;
+            }
+        ``` 
