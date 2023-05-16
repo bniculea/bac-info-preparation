@@ -55,4 +55,42 @@
             }
 
         ```
+2. Solutie:
+    ```c++
+        #include <iostream>
+        using namespace std;
+
+        struct data
+        {
+            int zi,luna,an;
+        };
+        struct elev
+        {
+            char nume[20];
+            data datan;
+        };
+        elev m;
+
+        int main() {
+
+            cout << "Introduceti numele elevului (max 20 caractere): ";
+            cin.getline(m.nume, 20);
+            cout << "Introduceti data nasterii\n";
+            cout << "Ziua: ";
+            cin >> m.datan.zi;
+            cout << "Luna: ";
+            cin >> m.datan.luna;
+            cout << "Anul: ";
+            cin >> m.datan.an;
+
+            if (m.datan.an < 2000) {
+                cout << m.nume;
+            }  else {
+                cout << m.datan.zi <<"/"<<m.datan.luna<<"/"<<m.datan.an;
+            }
+            return 0;
+        }
+
+    ```
+3. Solutie: `bacalaureat`. Programul transforma literele mari in litere mici.
 ## Subiectul III
