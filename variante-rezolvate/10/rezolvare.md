@@ -8,8 +8,6 @@
     ![ Graf](s1-4.png)
 5. a [Pentru ca nodurile terminale sa fie minime, trebuie ales ca radacina unul din nodurile terminale actuale]
 ## Subiectul II
-
-## Subiectul III
 1. 
     - a Se va afisa `1`
         ```json
