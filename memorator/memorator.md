@@ -40,7 +40,7 @@
         - Totul poate fi gasit in link-urile de mai jos
     - Vector de tati
     - Ce este o frunza
-    - Descendenti, descendenti directi
+    - Descendenti, descendenti directi, ascendenti, ascendenti directi
 ## Grafuri neorientate
 - Materialul complet se gaseste aici: https://www.pbinfo.ro/articole/810/grafuri-neorientate
 
