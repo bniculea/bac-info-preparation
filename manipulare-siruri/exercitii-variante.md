@@ -110,4 +110,17 @@
         ```
     - Solutie:
         ```json
+                -> i = 0 = consoana, merem mai departe
+                -> i = 1 => vocala => S = BACALAUREAT si inlocuim de la pozitia i+1 adica 2 cu textul din s de la pozitia i+2 adica 3
+                                      =>s = BAALAUREAT
+                -> i = 2 = vocala => si inlocuim de la pozitia i+1 adica 3, cu textul din s de la pozitia i+2 adica 4
+                                      => BAAAUREAT
+                -> i = 3 => vocala => si inlocuim de la pozitia i+1 adica 4, cu textul din s de la pozitia i+2 adica 5
+                ->                  => BAAAREAT
+                -> i = 4 => consoana, mergem mai departe
+                -> i = 5 => vocala => si inlocuim de la pozitia i+1 adica 6, cu textul din s de la pozitia i+2 adica 7
+                              => BAAARET
+                -> i = 6 -> ne oprim deoarece i < strlen(s)-1 devine falsa
+                -> deci programul afiseaza 11BAAARET
+            
         ```
