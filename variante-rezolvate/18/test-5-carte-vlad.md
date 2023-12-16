@@ -246,3 +246,119 @@
                 - Exemplu i = 2 si j = 0 inseamna ca va trebui sa scriem al i - j element de dupa `A`, adica `C`
             - Dupa cum se vede in cod, nu am declarat alte variabile, deci am respectat cerinta si nici nu ne-am batut capul cu indexi asa tare
 ## Subiectul III
+
+1. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            int calcul(float numere[], int n);
+
+            int main(){
+                float numere[] = {2.14, 4.5, 23.5, 40.5, 65.4, 12.5};
+                cout << calcul(numere, 6);
+            }
+
+            int calcul(float numere[], int n) {
+                float medie = 0.0;
+                float suma = 0.0;
+                for (int i = 0; i < n; i++) {
+                    suma += numere[i];
+                }
+                medie = suma / n;
+                int contor = 0;
+                for (int i = 0; i < n; i++) {
+                    if (numere[i] <= medie) {
+                        contor++;
+                    }
+                }
+
+                return contor;
+            }
+        ```
+
+2. 
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+            #include <fstream>
+
+            using namespace std;
+
+            int esteVocala(char ch);
+
+            int main(){
+            ifstream fin("bac.txt");
+
+            char propozitiaCeaMaiLunga[201];
+            int numarVocaleMaxim = 0;
+
+            char propozitiaCurenta[201];
+            while (fin.getline(propozitiaCurenta, 201)) {
+                int numarVocale = 0;
+                for (int i = 0; i < strlen(propozitiaCurenta); i++) {
+                    if (esteVocala(propozitiaCurenta[i])) {
+                        numarVocale++;
+                    }
+                }
+                if (numarVocale >= numarVocaleMaxim) {
+                    numarVocaleMaxim = numarVocale;
+                    strcpy(propozitiaCeaMaiLunga, propozitiaCurenta);
+                }
+            }
+
+            cout << propozitiaCeaMaiLunga;
+
+            fin.close();
+            }
+
+            int esteVocala(char ch) {
+            return strchr("aeiou", ch) != NULL;
+            }
+        ```
+3. 
+    - Rezolvare:
+        * a
+            ```json
+                Programul se reduce la a avea numerele sortate crescator (formandu-se un set cu ele, anume daca 0 apare de 3 ori, il luam o singura data sau mai bine zis, ca apare o data sau de 100 de ori, nu ne pasa asa mult) si afisarea lor, doua cate 2, cu conditia ca diferenta intre ele sa fie mai mare decat 1.
+                In algoritmul de mai jos, avem o solutie eficienta din punct de vedere al timpului de executie deooarece parcurgem fisierul o singura data, timp in care si populam un vector de aparitii (sau frecventa).
+                Dupa aceea, ne uitam la elementele din vectorul de aparitii care au cel putin o aparitie si afisam elementele, 2 cate doua, cu proprietatea ca intre ele exista o diferenta mai mare decat 1. Facem lucrul acesta cu ajutorul unei variabile prin care stim unde incepe intervalul, variabila pe care o actualizam cu fiecare element care are cel putin o aparitie.
+            
+            ```
+        * b
+            ```c++
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+                int main(){
+                ifstream fin("bac.txt");
+                int numere[100]= {0};
+                int numar = 0;
+                while (fin >> numar) {
+                    numere[numar]++;
+                }
+
+                int pozitieInceputInterval = -1;
+                int existaPerechi = 0;
+                for (int i = 0; i < 100; i++) {
+                    if (numere[i] != 0 ) {
+                        if (pozitieInceputInterval == -1) {
+                            pozitieInceputInterval = i;
+                        } else if (i > (pozitieInceputInterval+1)) {
+                            cout << pozitieInceputInterval << " " << i << endl;
+                            existaPerechi = 1;
+                        }
+                        pozitieInceputInterval = i;
+                    }
+                }
+
+                if (existaPerechi == 0) {
+                    cout << "NU EXISTA";
+                }
+                fin.close();
+                }
+
+            ```
