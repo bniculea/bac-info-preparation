@@ -93,5 +93,156 @@
             ![Poza graf](imagini/t5-s1-e5-d.png)
             - Raspuns corect: `c`
 ## Subiectul II
+1. 
+    * a 
+        - Rezolvare
+            ```json
+                n = 375629
+                max = 0
+                    n = 37562
+                    max < 2 true
+                        max = 2
+                    n = 3756
+                    max < 6
+                        max = 6
+                    n = 375
+                    max < 5 false
+                    n = 37
+                    max < 7
+                        max = 7
+                    n = 3
+                    max < 3 false
+                    n = 0
+                scrie 7
+            ```
+    * b
+        - Programul calculeaza cifra maxima, din numar, cu exceptia ultimei cifre care nu este luata in calcul
+        - Tinand cont ca avem un numar de 3 cifre si maxima in primele 2 sa fie 7 avem asa:
+            - 10 numere care incep cu 1
+                - 1 7 x
+                    - unde x poate fi orice numar din `[0,1,2,3,4,5,6,7,8,9]`
+            - 10 numere care incep cu 2
+                 - 2 7 x
+                    - unde x poate fi orice numar din `[0,1,2,3,4,5,6,7,8,9]`
+            - 10 numere care incep cu 3
+                 - 3 7 x
+                    - unde x poate fi orice numar din `[0,1,2,3,4,5,6,7,8,9]`
+            - 10 numere care incep cu 4
+                 - 4 7 x
+                    - unde x poate fi orice numar din `[0,1,2,3,4,5,6,7,8,9]`
+            - 10 numere care incep cu 5
+                 - 5 7 x
+                    - unde x poate fi orice numar din `[0,1,2,3,4,5,6,7,8,9]`
+            - 10 numere care incep cu 6
+                 - 6 7 x
+                    - unde x poate fi orice numar din `[0,1,2,3,4,5,6,7,8,9]`
+            - 80 numere care incep cu 7 adica avem un numar de forma:
+                 - 7 x y
+                    - unde x poate fi orice numar din `[0,1,2,3,4,5,6,7]`
+                    - si y poate fi orice numar din `[0,1,2,3,4,5,6,7,8,9]`
+                - care se traduce prin 1 * 8 * 10 = 80
+            
+        - In total avem 140 de numere
+    * c 
+        ```c++
+            #include <iostream>
+            using namespace std;
 
+            int main()
+            {
+                int n;
+                cin >> n;
+                int max = 0;
+                do {
+                    n = n /10;
+                    if (max < n % 10) {
+                        max = n % 10;
+                    }
+                } while (n != 0);
+                cout << max;
+            }
+         ```
+         - Si mai jos un program care ne valideaza cerinta de la punctul b:
+            ```c++
+                #include <iostream>
+                using namespace std;
+
+                int main()
+                {
+                    int contor = 0;
+                    for (int i = 100; i <= 999; i++) {
+                        int n = i;
+                        int max = 0;
+                        do {
+                            n = n /10;
+                            if (max < n % 10) {
+                                max = n % 10;
+                            }
+                        } while (n != 0);
+                        if (max == 7) {
+                            cout << i << endl;
+                            contor++;
+                        }
+                    }
+                    cout << "Avem " << contor << " numere intre 100 si 999 care afiseaza 7 in urma algoritmului";
+                }
+            ```       
+    * d
+        ```json
+            citeste n (numar natural nenul de cel mult 8 cifre)
+            max <- 0
+            n = n / 10;
+            daca (max < n % 10) atunci
+                    max <-  n % 10
+            cat timp (n != 0) executa
+                n = n/10
+                daca (max < n % 10) atunci
+                    max <-  n % 10
+            scrie max
+        ```
+2. 
+    - Rezolvare:
+        ```c++
+            cout << sqrt(z.re*z.re + z.im*z.im)
+        ```
+3. 
+    - Rezolvare:
+        - nota: autorul a uitat sa introduca secventa..  dar hai sa ne imaginam noi ca avem un sir care contine caracterele `A, B, C, D` si nu avem voie sa folosim alte variabile afara de `a` (sir), `i` si `j`  pentru a afisa matricea din poza din carte
+        - putem observa ca pe diagonala principala avem litera `A` si cand mergem la stanga sau la dreapta scriem in ordine alfabetica. De exemplu, linia 2, avem pe pozitia 2 litera `A`, putem merge un caracter la dreapta ca sa nu depasim intervalul specificat deci punem urmatoarea litera, adica `B`. La stanga insa, putem merge doua pozitii, pe prima punem `B` si pe a doua, punem `C`.
+        - Practic, putem spune ca daca suntem pe diagonala principala, punem caracterul `A` si in rest punem caracterul care se afla la aceeasi distanta de `A` egala cu distanta dintre pozitia curenta si pozitia diagonalei principale (in modul, desigur)
+        ```c++
+            #include <iostream>
+            using namespace std;
+
+            int main()
+            {
+                char a[4][4];
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        if ((j - i) >= 0) {
+                            a[i][j] = 'A'+ (j-i);
+                        } else {
+                            a[i][j] = 'A' + (i-j);
+                        }
+                    }
+                }
+
+                // Afisam matricea. Practic solutia este reprezentata de for-urile de mai sus
+                cout << endl;
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        cout << a[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+
+            }
+        ```
+        - Deoarece solutia noastra este muult mai simpla decat ce ofera cartea insa fiind mai compacta poate genera probleme la intelegere asa ca hai sa o explicam
+            - Un element se afla pe diagonala principala daca i = j. Asta inseamna ca in cazul nostru, daca i ar fi egal cu j, am pune `A`+ 0, adica `A`
+            - Daca un element sa zicem se afla la dreapta de diagonala principala, atunci `j` va fi  mai mare decat `i` si diferenta dintre ele va reprezenta distanta dintre `A` si caracterul ce va trebui sa scriem
+                - Exemplu j = 3 si i = 0 inseamna ca va trebui sa scriem al 3-lea caracter de dupa A, adica `D`
+            - Insa, daca un element se afla la stanga de diagonala principala, atunci `j` va fi mai mic decat `i` si deoarece nu avem voie sa avem distante negative, scadem pe `j` din `i` pentru a afla elementul care se afla la o anumita distanta fata de `A`
+                - Exemplu i = 2 si j = 0 inseamna ca va trebui sa scriem al i - j element de dupa `A`, adica `C`
+            - Dupa cum se vede in cod, nu am declarat alte variabile, deci am respectat cerinta si nici nu ne-am batut capul cu indexi asa tare
 ## Subiectul III
