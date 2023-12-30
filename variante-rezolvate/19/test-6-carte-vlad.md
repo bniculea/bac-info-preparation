@@ -161,4 +161,118 @@
             cat timp (n > 1)
         ```
 2. 
+    - Rezolvare:
+        ```c++
+            C.x = (A.x+B.x) / 2;
+            C.y = (A.y + B.y) / 2;
+        ```
+3. 
+    - Rezolvare:
+        ```c++
+            i = 0;
+            j = strlen(s) - 1;
+            while (i < j) {
+                char temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+                i++;
+                j--;
+            }
+        ```
 ## Subiectul III
+1.
+    - Rezolvare:
+        ```c++
+            #include <iostream>
+
+            using namespace std;
+
+            int numarare(int[], int);
+
+            int main() {
+                int v[] = {1234, 2342, 3453, 5678, 8768};
+                int n = 5;
+                cout << numarare(v, n);
+                return 0;
+            }
+
+            int numarare(int v[], int n) {
+                int contor = 0;
+                for (int i = 0; i < n; i++) {
+                    int primaCifra = v[i] / 1000;
+                    int ultimaCifra = v[i] % 10;
+                    if (primaCifra == ultimaCifra) {
+                        contor++;
+                    }
+                }
+                return contor;
+            }
+
+        ```
+2.   
+    - Rezolvare:
+        ```c++
+        #include <iostream>
+        #include <cstring>
+
+        using namespace std;
+
+        int numarare(int[], int);
+
+        int main() {
+            char s[101];
+            cin.getline(s, 101);
+            int contor = 0;
+            char* token = strtok(s, " ");
+            while (token != NULL) {
+                int i = 0;
+                int j = strlen(token)-1;
+                int estePalindrom = 1;
+                while (i < j) {
+                    if (token[i] != token[j]) {
+                        estePalindrom = 0;
+                        break;
+                    }
+                    i++;
+                    j--;
+                }
+                if (estePalindrom == 1) {
+                    contor++;
+                }
+                token = strtok(NULL, " ");
+            }
+
+            cout << contor;
+            return 0;
+        }
+        ```
+    - Nota: o buna parte din logica se regasea la subiectul II, exercitiul 3. Practic, un cuvant este palindrom daca literele aflate pe pozitii simetrice sunt identice.
+3. 
+    - Rezolvare:
+        * a
+            O sa implementam un algoritm care va parcurge fisierul si va salva numerele citite intr-un vector de frecvente ce va avea 101 elemente, maximum. Dupa care, vom parcurge vectorul de frecventa, incepand cu pozitia 0 si vom afisa doar numerele ce vor avea frecventa 1. Algoritmul este eficient din punct de vedere al timpului de executie deoarece  parcurgem o singura data fisierul, si din punct de vedere al memoriei, este eficient deoarece din maximum de 1_000_000 de numere cate pot fi, noi o sa avem maximum 101 numere in memorie.
+        * b
+            ```c+
+                #include <iostream>
+                #include <fstream>
+
+                using namespace std;
+
+
+                int main() {
+                    int frecventa[101] = {0};
+                    ifstream fin("date.in");
+                    int numar;
+                    while (fin>> numar) {
+                        frecventa[numar]++;
+                    }
+
+                    for (int i = 0; i < 101;i++) {
+                        if (frecventa[i] == 1) {
+                            cout << i <<" ";
+                        }
+                    }
+                    fin.close();
+                    return 0;
+                }
+            ```
